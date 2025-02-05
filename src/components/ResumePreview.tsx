@@ -3,7 +3,6 @@ import { useResume } from "../context/ResumeContext";
 // @ts-ignore
 import html2pdf from "html2pdf.js";
 import { Download, Upload, AlertCircle, Eye } from "lucide-react";
-import { Rnd } from "react-rnd";
 
 const Section = ({ title, condition, children, grid }: any) =>
   condition && (
@@ -40,7 +39,6 @@ export default function ResumePreview() {
   } = state;
 
   const [isTooLarge, setIsTooLarge] = useState(false);
-  const [showBorders, setShowBorders] = useState(false);
 
   useEffect(() => {
     const element = document.getElementById("resume-preview");
@@ -137,12 +135,6 @@ export default function ResumePreview() {
         >
           <Eye className="w-4 h-4" /> View PDF
         </button>
-        <button
-          onClick={() => setShowBorders(!showBorders)}
-          className="flex items-center gap-2 px-4 py-2 bg-gray-400 text-white rounded-md hover:bg-gray-500 shadow-lg"
-        >
-          Toggle Borders
-        </button>
       </div>
 
       <div
@@ -151,51 +143,42 @@ export default function ResumePreview() {
         style={{ font: "15pt 'Times New Roman', serif", color: "#333" }}
       >
         <div id="resume-preview-content">
-          <Rnd
-            default={{ x: 0, y: 0, width: "auto", height: "auto" }}
-            bounds="#resume-preview"
-            style={{
-              border: showBorders ? "1px dashed red" : "none",
-              padding: "0.5rem",
-            }}
-          >
-            <header className="text-center mb-4">
-              {personalInfo.profilePicture && (
-                <img
-                  src={personalInfo.profilePicture}
-                  alt={personalInfo.fullName}
-                  className="w-20 h-20 rounded-full mx-auto mb-2"
-                  onError={(e) => (e.currentTarget.style.display = 'none')}
-                  onLoad={(e) => {
-                    const img = new Image();
-                    if (personalInfo.profilePicture) {
-                      img.src = personalInfo.profilePicture;
-                    }
-                    img.onerror = () => (e.currentTarget.style.display = 'none');
-                  }}
-                />
-              )}
-              <h1 className="text-2xl font-bold mb-1">{personalInfo.fullName}</h1>
-              <h2 className="text-lg mb-2">{personalInfo.title}</h2>
-              <div className="text-xs text-gray-600 space-y-1">
-                <p>
-                  {[
-                    personalInfo.email,
-                    personalInfo.phone,
-                    personalInfo.location,
-                  ].join(" | ")}
-                </p>
-                <div className="flex justify-center gap-2">
-                  {personalInfo.githubUrl && (
-                    <span>GitHub: {personalInfo.githubUrl}</span>
-                  )}
-                  {personalInfo.linkedinUrl && (
-                    <span>LinkedIn: {personalInfo.linkedinUrl}</span>
-                  )}
-                </div>
+          <header className="text-center mb-4">
+            {personalInfo.profilePicture && (
+              <img
+                src={personalInfo.profilePicture}
+                alt={personalInfo.fullName}
+                className="w-20 h-20 rounded-full mx-auto mb-2"
+                onError={(e) => (e.currentTarget.style.display = 'none')}
+                onLoad={(e) => {
+                  const img = new Image();
+                  if (personalInfo.profilePicture) {
+                    img.src = personalInfo.profilePicture;
+                  }
+                  img.onerror = () => (e.currentTarget.style.display = 'none');
+                }}
+              />
+            )}
+            <h1 className="text-2xl font-bold mb-1">{personalInfo.fullName}</h1>
+            <h2 className="text-lg mb-2">{personalInfo.title}</h2>
+            <div className="text-xs text-gray-600 space-y-1">
+              <p>
+                {[
+                  personalInfo.email,
+                  personalInfo.phone,
+                  personalInfo.location,
+                ].join(" | ")}
+              </p>
+              <div className="flex justify-center gap-2">
+                {personalInfo.githubUrl && (
+                  <span>GitHub: {personalInfo.githubUrl}</span>
+                )}
+                {personalInfo.linkedinUrl && (
+                  <span>LinkedIn: {personalInfo.linkedinUrl}</span>
+                )}
               </div>
-            </header>
-          </Rnd>
+            </div>
+          </header>
 
           {personalInfo.summary && (
             <Section title="PROFESSIONAL SUMMARY" condition={!!personalInfo.summary}>
