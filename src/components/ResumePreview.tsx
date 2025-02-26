@@ -57,7 +57,7 @@ export default function ResumePreview() {
         html2canvas: { scale: 2 },
         jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
       })
-      .from(element)
+      .from(element)  
       .save();
   };
 
@@ -103,7 +103,9 @@ export default function ResumePreview() {
             <AlertCircle className="w-5 h-5 mr-2" />
             <strong className="font-bold">Warning</strong>
           </div>
-          <p className="text-sm">The resume content is too large for one page.</p>
+          <p className="text-sm">
+            The resume content is too large for one page.
+          </p>
         </div>
       )}
 
@@ -139,8 +141,13 @@ export default function ResumePreview() {
 
       <div
         id="resume-preview"
-        className="max-w-[8.5in] mx-auto bg-white shadow-lg p-4 h-screen overflow-auto"
-        style={{ font: "15pt 'Times New Roman', serif", color: "#333" }}
+        className="max-w-[8.5in] mx-auto bg-white shadow-lg p-4"
+        style={{
+          font: "15pt 'Times New Roman', serif",
+          color: "#333",
+          transform: "scale(0.75)",
+          transformOrigin: "top left",
+        }}
       >
         <div id="resume-preview-content">
           <header className="text-center mb-4">
@@ -149,13 +156,13 @@ export default function ResumePreview() {
                 src={personalInfo.profilePicture}
                 alt={personalInfo.fullName}
                 className="w-20 h-20 rounded-full mx-auto mb-2"
-                onError={(e) => (e.currentTarget.style.display = 'none')}
+                onError={(e) => (e.currentTarget.style.display = "none")}
                 onLoad={(e) => {
                   const img = new Image();
                   if (personalInfo.profilePicture) {
                     img.src = personalInfo.profilePicture;
                   }
-                  img.onerror = () => (e.currentTarget.style.display = 'none');
+                  img.onerror = () => (e.currentTarget.style.display = "none");
                 }}
               />
             )}
@@ -181,12 +188,18 @@ export default function ResumePreview() {
           </header>
 
           {personalInfo.summary && (
-            <Section title="PROFESSIONAL SUMMARY" condition={!!personalInfo.summary}>
+            <Section
+              title="PROFESSIONAL SUMMARY"
+              condition={!!personalInfo.summary}
+            >
               <p className="text-xs text-gray-700">{personalInfo.summary}</p>
             </Section>
           )}
 
-          <Section title="WORK EXPERIENCE" condition={!!(workExperience && workExperience.length)}>
+          <Section
+            title="WORK EXPERIENCE"
+            condition={!!(workExperience && workExperience.length)}
+          >
             {workExperience.map((exp: any) => (
               <Entry
                 key={exp.id}
@@ -200,7 +213,10 @@ export default function ResumePreview() {
             ))}
           </Section>
 
-          <Section title="EDUCATION" condition={!!(education && education.length)}>
+          <Section
+            title="EDUCATION"
+            condition={!!(education && education.length)}
+          >
             {education.map((edu: any) => (
               <Entry
                 key={edu.id}
@@ -213,41 +229,59 @@ export default function ResumePreview() {
             ))}
           </Section>
 
-          <Section title="CERTIFICATIONS" condition={!!(certifications && certifications.length)} grid>
+          <Section
+            title="CERTIFICATIONS"
+            condition={!!(certifications && certifications.length)}
+            grid
+          >
             {certifications.map((c: any) => (
               <div key={c.id} className="mb-2">
-                <h3 className="font-bold text-xs">{c.name}</h3>
+                <h3 className="font-bold text-xs">
+                  {c.credentialUrl ? (
+                    <a href={c.credentialUrl} className="text-blue-500">
+                      {c.name}
+                    </a>
+                  ) : (
+                    c.name
+                  )}
+                </h3>
                 <p className="text-xs text-gray-600">
                   {c.issuer} • {c.issueDate}
                 </p>
-                {c.credentialUrl && (
-                  <a href={c.credentialUrl} className="text-blue-500 text-xs">
-                    View Credential
-                  </a>
-                )}
               </div>
             ))}
           </Section>
 
-          <Section title="TECHNICAL SKILLS" condition={!!(skills && skills.length)} grid>
+          <Section
+            title="TECHNICAL SKILLS"
+            condition={!!(skills && skills.length)}
+            grid
+          >
             {skills.map((s: any) => (
               <div key={s.id} className="text-xs">
-                • {s.name} – {s.experience || "Proficiency"} 
+                • {s.name} – {s.level || "Proficiency"}
                 {/* Replace "Proficiency" with an appropriate descriptor or years of experience */}
               </div>
             ))}
           </Section>
 
-          <Section title="PROJECTS" condition={!!(projects && projects.length)}>
+          <Section
+            title="PROJECTS"
+            condition={!!(projects && projects.length)}
+            grid
+          >
             {projects.map((p: any) => (
-              <div key={p.id} className="mb-3">
+              <div key={p.id} className="mb-3 col-span-1">
                 <div className="flex justify-between items-baseline">
-                  <h3 className="font-bold text-xs">{p.name}</h3>
-                  {p.link && (
-                    <a href={p.link} className="text-blue-500 text-xs">
-                      View Project
-                    </a>
-                  )}
+                  <h3 className="font-bold text-xs">
+                    {p.link ? (
+                      <a href={p.link} className="text-blue-500">
+                        {p.name}
+                      </a>
+                    ) : (
+                      p.name
+                    )}
+                  </h3>
                 </div>
                 <p className="text-xs text-gray-700 mb-1">{p.description}</p>
                 <div className="flex flex-wrap gap-1">
@@ -264,7 +298,11 @@ export default function ResumePreview() {
             ))}
           </Section>
 
-          <Section title="LANGUAGES" condition={!!(languages && languages.length)} grid>
+          <Section
+            title="LANGUAGES"
+            condition={!!(languages && languages.length)}
+            grid
+          >
             <div className="grid grid-cols-3 gap-2">
               {languages.map((l: any) => (
                 <div key={l.id} className="flex justify-between text-xs">
@@ -275,7 +313,10 @@ export default function ResumePreview() {
             </div>
           </Section>
 
-          <Section title="REFERENCES" condition={!!(references && references.length)}>
+          <Section
+            title="REFERENCES"
+            condition={!!(references && references.length)}
+          >
             {references.map((r: any) => (
               <div key={r.id} className="border p-2 rounded text-xs mb-2">
                 <h3 className="font-bold">{r.name}</h3>

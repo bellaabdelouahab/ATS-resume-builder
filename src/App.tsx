@@ -33,7 +33,7 @@ function App() {
             </div>
 
             {/* Preview Section */}
-            <div className="sticky top-8">
+            <div>
               <ResumePreview />
             </div>
           </div>
