@@ -1,0 +1,133 @@
+{
+  "personalInfo": {
+    "fullName": "BELLA ABDELOUAHAB",
+    "title": "Data Analyst",
+    "email": "abdobella977@gmail.com",
+    "phone": "+2127-62549778",
+    "location": "Taroudant, Morocco",
+    "profilePicture": "https://example.com/profile.jpg",
+    "summary": "Data Analyst avec 9 mois d'expérience en informatique décisionnelle et ingénierie logicielle, spécialisé dans l'analyse de données, le machine learning et le développement full-stack. Passionné par l'utilisation des données pour générer des insights business et améliorer l'efficacité opérationnelle.",
+    "githubUrl": "https://codemaster.ninja",
+    "linkedinUrl": "https://linkedin.com/in/dummy",
+    "portfolioUrl": "https://codemaster.ninja"
+  },
+  "workExperience": [
+    {
+      "id": "we1",
+      "company": "CRJEA - UM6P",
+      "position": "Web Application Developer",
+      "startDate": "Jul 2022",
+      "endDate": "Aug 2022",
+      "current": false,
+      "description": "Application web pour la gestion et analyse des données de projets. Technologies: Django • React • MongoDB • Radius • Power BI • Swagger-docs"
+    },
+    {
+      "id": "we2",
+      "company": "Post Maroc - SFE",
+      "position": "Data Analyst",
+      "startDate": "Apr 2022",
+      "endDate": "Jul 2022",
+      "current": false,
+      "description": "Analyse de données pour la gestion des enveloppes. Technologies: Microsoft Excel • JavaFX • Scene-Builder • Oracle-Cloud • pdf-manipulation"
+    },
+    {
+      "id": "we3",
+      "company": "Ministère de l'agriculture - AGRI 4.0",
+      "position": "Full Stack Developer",
+      "startDate": "Apr 2023",
+      "endDate": "Jun 2023",
+      "current": false,
+      "description": "Création d'un système avancé de gestion du bétail avec Spring Boot et Angular"
+    }
+  ],
+  "education": [
+    {
+      "id": "ed1",
+      "institution": "Lycée Iben Soulaiman Roudani",
+      "degree": "Baccalauréat Sciences Mathématique (A)",
+      "field": "Sciences Mathématiques",
+      "startDate": "2017",
+      "endDate": "2020",
+      "current": false
+    },
+    {
+      "id": "ed2",
+      "institution": "Ecole Supérieure de Technologie Essaouira",
+      "degree": "DUT Data Science and Business Intelligence",
+      "field": "Data Science",
+      "startDate": "2020",
+      "endDate": "2022",
+      "current": false
+    },
+    {
+      "id": "ed3",
+      "institution": "Ecole Supérieure de Technologie Essaouira",
+      "degree": "LP Ingénierie des Systèmes Informatiques & Logiciels",
+      "field": "Computer Engineering",
+      "startDate": "2022",
+      "endDate": "2023",
+      "current": false
+    }
+  ],
+  "skills": [],
+  "languages": [
+    {
+      "id": "lang1",
+      "name": "Arabic",
+      "level": "Native"
+    },
+    {
+      "id": "lang2",
+      "name": "English",
+      "level": "Fluent"
+    },
+    {
+      "id": "lang3",
+      "name": "French",
+      "level": "Fluent"
+    }
+  ],
+  "projects": [
+    {
+      "id": "pr1",
+      "name": "Self Driving Car Using Double Deep Q Learning Network",
+      "description": "Résolution de problèmes et pensée critique",
+      "technologies": [
+        "Deep Learning",
+        "Reinforcement Learning"
+      ]
+    },
+    {
+      "id": "pr2",
+      "name": "Reconnaissance des panneaux de signalisation",
+      "description": "Utilisation de YOLOv8 et CNN pour la détection de panneaux marocains",
+      "technologies": [
+        "TensorFlow",
+        "YOLOv8",
+        "CNN"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "id": "ref1",
+      "name": "Dummy Reference",
+      "position": "Senior Developer",
+      "company": "Dummy Company",
+      "email": "contact@dummy.com",
+      "phone": "+123-456-7890"
+    }
+  ],
+  "certifications": [],
+  "visibleSections": [
+    "personalInfo",
+    "workExperience",
+    "education",
+    "skills",
+    "languages",
+    "projects",
+    "references",
+    "certifications"
+  ],
+  "selectedTemplate": "modern"
+}
